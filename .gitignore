@@ -1,0 +1,10 @@
+tmp/
+.ruff_cache/
+**/.ruff_cache/
+.ruff_cache/
+**/.ruff_cache/
+**/__pycache__/
+**/*.py[cod]
+**/.venv/
+BladeRF_FMCW_Demo/captures/
+BladeRF_FMCW_Demo/reports/run_*/

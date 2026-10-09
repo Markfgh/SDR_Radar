@@ -1,0 +1,2 @@
+-r requirements-sww.txt
+ruff>=0.17,<1
