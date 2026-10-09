@@ -33,17 +33,33 @@ firmware, FPGA, libbladeRF versions, and the hardware-reported RX ranges. Any
 libbladeRF API error is shown verbatim and the command exits; it does not
 silently use a simulation or a fallback device.
 
-Run the explicit RX-only hardware smoke test (it configures 2.4 GHz / 20 MS/s /
-15 MHz / 20 dB and receives one 8192-sample block):
+Run the explicit RX-only hardware smoke test (it configures the 28 MHz base:
+2.414 GHz LO / 40 MS/s / 28 MHz / 20 dB and receives one 8192-sample block):
 
 ```powershell
 .\.venv\Scripts\python.exe rx_smoke_test.py
+```
+
+The GUI base configuration is a 28 MHz chirp at 40 MS/s (about 5.35 m
+theoretical range resolution). For an explicitly authorised low-power
+full-duplex test only (2400–2428 MHz,
+TX gain at the hardware minimum, digital amplitude 5%):
+
+```powershell
+.\.venv\Scripts\python.exe txrx_smoke_test.py --confirm-tx
 ```
 
 ## Use the GUI
 
 ```powershell
 .\.venv\Scripts\python.exe main.py
+```
+
+For the stripped-down continuous-chirp application (generated chirp plus real
+Range FFT only), start:
+
+```powershell
+.\.venv\Scripts\python.exe simple_fmcw.py
 ```
 
 1. Click **CONNECT** and verify the board, FPGA, and all reported RX/TX ranges.

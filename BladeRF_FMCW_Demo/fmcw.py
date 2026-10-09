@@ -4,10 +4,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-from scipy.signal import correlate, find_peaks
+from scipy.signal import correlate, find_peaks, stft
 
 
 SPEED_OF_LIGHT = 299_792_458.0
+RANGE_FFT_ZERO_PAD_FACTOR = 8  # visual interpolation only; never improves c/(2B) resolution
 
 
 @dataclass(frozen=True)
@@ -56,6 +57,20 @@ class ProcessingResult:
     offset_samples: int
     peak_ranges_m: np.ndarray
     raw: bool
+    beat: np.ndarray
+    alignment_confidence: float
+    alignment_peak_to_median_db: float
+    synced: bool
+    leakage_range_m: float
+
+
+@dataclass(frozen=True)
+class ChirpAlignment:
+    """Generated-TX-template chirp boundary estimate for one real RX block."""
+    offset_samples: int
+    confidence: float
+    peak_to_median_db: float
+    reliable: bool
 
 
 @dataclass(frozen=True)
@@ -93,11 +108,15 @@ def rx_adc_metrics(samples: np.ndarray, near_full_scale: float = 0.99) -> RxAdcM
 def generate_baseband_chirp(params: FmcwParameters, amplitude: float = 0.05) -> np.ndarray:
     """Return a centered, complex up-chirp. It is a generated reference, not RF measurement."""
     params.validate()
-    if not 0.0 < amplitude <= 2047.0 / 2048.0:
-        raise ValueError("Amplitude must be > 0 and below the SC16_Q11 positive full scale")
+    if not 0.0 < amplitude <= 1.0:
+        raise ValueError("Amplitude must be in the inclusive range (0, 1] full scale")
     time_s = np.arange(params.samples_per_chirp, dtype=np.float64) / params.sample_rate_sps
     phase = 2.0 * np.pi * (-params.bandwidth_hz * time_s / 2.0 + params.slope_hz_per_s * time_s**2 / 2.0)
-    return (amplitude * np.exp(1j * phase)).astype(np.complex64)
+    # SC16_Q11's positive limit is +2047/2048. A GUI request for 100% is
+    # therefore represented by that exact maximum rather than overflowing or
+    # rejecting the requested control range.
+    effective_amplitude = min(amplitude, 2047.0 / 2048.0)
+    return (effective_amplitude * np.exp(1j * phase)).astype(np.complex64)
 
 
 def generated_rf_frequency_hz(params: FmcwParameters) -> tuple[np.ndarray, np.ndarray]:
@@ -106,13 +125,43 @@ def generated_rf_frequency_hz(params: FmcwParameters) -> tuple[np.ndarray, np.nd
     return time_s, params.start_frequency_hz + params.bandwidth_hz * time_s / params.duration_s
 
 
-def _best_chirp_alignment(rx: np.ndarray, reference: np.ndarray) -> int:
-    """Find strongest leakage-like copy of the reference within one acquired block."""
+def estimate_chirp_alignment(rx: np.ndarray, reference: np.ndarray) -> ChirpAlignment:
+    """Locate a generated-TX chirp in RX I/Q without declaring absolute time."""
     if rx.size < reference.size:
         raise ValueError("RX block is shorter than one chirp")
-    # Cross-correlation finds a timing reference, not a proof of absolute time.
     values = correlate(rx, reference, mode="valid", method="fft")
-    return int(np.argmax(np.abs(values)))
+    magnitude = np.abs(values)
+    offset = int(np.argmax(magnitude))
+    segment = rx[offset:offset + reference.size]
+    denominator = np.sqrt(float(np.vdot(segment, segment).real * np.vdot(reference, reference).real))
+    confidence = float(magnitude[offset] / denominator) if denominator else 0.0
+    median = max(float(np.median(magnitude)), np.finfo(float).tiny)
+    peak_to_median_db = 20.0 * np.log10(max(float(magnitude[offset]), np.finfo(float).tiny) / median)
+    # These conservative thresholds avoid presenting host-buffer noise as a
+    # chirp boundary. They are not a substitute for timestamped hardware sync.
+    reliable = magnitude.size >= 2 and confidence >= 0.12 and peak_to_median_db >= 6.0
+    return ChirpAlignment(offset, confidence, peak_to_median_db, reliable)
+
+
+def rx_spectrogram(samples: np.ndarray, sample_rate_sps: float, window_s: float,
+                   dynamic_range_db: float, nperseg: int = 2048) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return a centred, real-RX complex-I/Q spectrogram in relative dB."""
+    if samples.ndim != 1 or samples.size < 128:
+        raise ValueError("Spectrogram requires at least 128 complex RX samples")
+    if window_s <= 0 or dynamic_range_db <= 0:
+        raise ValueError("Spectrogram window and dynamic range must be positive")
+    count = min(samples.size, max(128, round(window_s * sample_rate_sps)))
+    observed = samples[-count:]
+    segment_length = min(nperseg, observed.size)
+    frequency_hz, time_s, values = stft(observed, fs=sample_rate_sps, window="hann", nperseg=segment_length,
+                                        noverlap=segment_length * 3 // 4, return_onesided=False,
+                                        boundary=None, padded=False)
+    frequency_hz = np.fft.fftshift(frequency_hz)
+    values = np.fft.fftshift(values, axes=0)
+    db = 20.0 * np.log10(np.maximum(np.abs(values), 1e-12))
+    db -= float(db.max())
+    db = np.maximum(db, -dynamic_range_db)
+    return time_s * 1000.0, frequency_hz / 1e6, db
 
 
 def process_fmcw_block(
@@ -134,20 +183,26 @@ def process_fmcw_block(
         raise ValueError("Maximum range must be positive")
     if reference.size != params.samples_per_chirp:
         raise ValueError("Reference length does not equal samples per chirp")
-    offset = _best_chirp_alignment(rx, reference)
-    # The estimated correlation position is diagnostic only. Applying it as a
-    # delay correction would erase the very propagation delay that creates the
-    # FMCW beat. With no verified TX/RX hardware timing reference, retain the
-    # acquired sample origin and label all displayed ranges UNSYNCED.
-    aligned = rx[:reference.size].astype(np.complex64, copy=False)
-    beat = aligned * np.conj(reference)
+    alignment = estimate_chirp_alignment(rx, reference)
+    # The generated TX template defines t=0 for this chirp only. Target propagation
+    # delays remain relative to it; they are not subtracted by this segmentation.
+    aligned = rx[alignment.offset_samples:alignment.offset_samples + reference.size].astype(np.complex64, copy=True)
     if dc_remove:
-        beat = beat - np.mean(beat)
-    spectrum = np.fft.fft(beat * np.hanning(beat.size))
-    frequencies = np.fft.fftfreq(beat.size, d=1.0 / params.sample_rate_sps)
-    positive = frequencies >= 0
-    range_m = SPEED_OF_LIGHT * frequencies[positive] / (2.0 * abs(params.slope_hz_per_s))
-    selected_spectrum = spectrum[positive]
+        aligned -= np.mean(aligned)
+    beat = aligned * np.conj(reference)
+    window = np.hanning(beat.size)
+    nfft = beat.size * RANGE_FFT_ZERO_PAD_FACTOR
+    # Zero padding gives a readable interpolated range curve; physical range
+    # resolution remains c/(2B) and is reported separately in the GUI.
+    spectrum = np.fft.fft(beat * window, n=nfft) / np.sum(window)
+    frequencies = np.fft.fftfreq(nfft, d=1.0 / params.sample_rate_sps)
+    # For an up-chirp with rx * conj(tx), a delayed echo lies on the negative
+    # frequency branch: f_b = -S*tau. Do not use the positive image as a target.
+    negative = frequencies < 0
+    range_m = -SPEED_OF_LIGHT * frequencies[negative] / (2.0 * params.slope_hz_per_s)
+    selected_spectrum = spectrum[negative]
+    order = np.argsort(range_m)
+    range_m, selected_spectrum = range_m[order], selected_spectrum[order]
     raw_spectrum = selected_spectrum.copy()
     raw = calibration_spectrum is None
     if calibration_spectrum is not None:
@@ -159,7 +214,12 @@ def process_fmcw_block(
     magnitude = np.abs(selected_spectrum)
     db = 20.0 * np.log10(np.maximum(magnitude, 1e-12) / max(float(magnitude.max()), 1e-12))
     peaks, _ = find_peaks(db, prominence=6.0)
-    # Suppress DC/leakage bin from displayed targets; it remains in raw plot.
-    peaks = peaks[range_m[peaks] >= params.range_resolution_m]
+    noise_floor = float(np.median(db))
+    # The low-range peak is the TX-to-RX leakage diagnostic, not a target.
+    peaks = peaks[(range_m[peaks] >= params.range_resolution_m) & (db[peaks] >= noise_floor + 6.0)]
+    if not alignment.reliable:
+        peaks = np.array([], dtype=int)
     strongest = peaks[np.argsort(db[peaks])[-5:]] if peaks.size else peaks
-    return ProcessingResult(range_m, db, raw_spectrum, aligned, offset, range_m[strongest], raw)
+    leakage_range_m = float(range_m[np.argmax(np.abs(raw_spectrum))]) if raw_spectrum.size else float("nan")
+    return ProcessingResult(range_m, db, raw_spectrum, aligned, alignment.offset_samples, range_m[strongest], raw,
+                            beat, alignment.confidence, alignment.peak_to_median_db, alignment.reliable, leakage_range_m)

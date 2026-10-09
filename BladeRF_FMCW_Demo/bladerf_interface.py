@@ -312,12 +312,12 @@ class BladeRFInterface:
         The returned dB value is the accepted hardware gain setting, not a
         calibrated RF output level in dBm.
         """
-        info = self.device_info()
-        low, high = info.tx_gain_range_db
-        if not low <= gain_db <= high:
-            raise ValueError(f"Requested TX gain {gain_db} dB is outside hardware range {low}..{high} dB")
-        assert self._lib is not None
         with self._control_lock:
+            info = self.device_info()
+            low, high = info.tx_gain_range_db
+            if not low <= gain_db <= high:
+                raise ValueError(f"Requested TX gain {gain_db} dB is outside hardware range {low}..{high} dB")
+            assert self._lib is not None
             self._check("bladerf_set_gain(TX0)", self._lib.bladerf_set_gain(self._dev, BLADERF_CHANNEL_TX0, gain_db))
             self._applied_tx_gain_db = gain_db
         return gain_db

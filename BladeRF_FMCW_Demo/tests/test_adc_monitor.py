@@ -33,6 +33,8 @@ class RxAdcMetricsTests(unittest.TestCase):
             self.assertFalse(window.radio._tx_enabled)
             self.assertEqual(window.tx_amplitude.value(), 5)
             self.assertEqual(window.rx_gain.value(), window.rx_gain.minimum())
+            self.assertEqual(window.chirp_bw.value(), 28.0)
+            self.assertEqual(window.sample_rate.value(), 40_000_000)
         finally:
             window.close()
             app.processEvents()

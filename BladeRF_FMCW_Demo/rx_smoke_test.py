@@ -11,9 +11,9 @@ def main() -> int:
     try:
         radio.open_device()
         config = radio.configure_rx(
-            center_frequency_hz=2_400_000_000,
-            sample_rate_sps=20_000_000,
-            bandwidth_hz=15_000_000,
+            center_frequency_hz=2_414_000_000,
+            sample_rate_sps=40_000_000,
+            bandwidth_hz=28_000_000,
             gain_db=20,
         )
         radio.start_streaming()
