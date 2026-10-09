@@ -58,7 +58,39 @@ class ProcessingResult:
     raw: bool
 
 
-def generate_baseband_chirp(params: FmcwParameters, amplitude: float = 0.40) -> np.ndarray:
+@dataclass(frozen=True)
+class RxAdcMetrics:
+    """Component-level SC16_Q11 ADC measurements, referenced to full scale."""
+    peak_dbfs: float
+    rms_dbfs: float
+    headroom_db: float
+    clipping_percent: float
+    clipping_detected: bool
+
+
+def rx_adc_metrics(samples: np.ndarray, near_full_scale: float = 0.99) -> RxAdcMetrics:
+    """Measure pre-DSP RX I/Q values using per-component 0 dBFS = |2048|.
+
+    ``samples`` must be normalized SC16_Q11 complex data. Peak and RMS are
+    evaluated over the individual I and Q components, rather than complex
+    magnitude, so a full-scale I component is 0 dBFS. Clipping is the percent
+    of components whose magnitude is at least ``near_full_scale``.
+    """
+    if samples.ndim != 1 or samples.size == 0:
+        raise ValueError("RX ADC monitor requires at least one complex sample")
+    if not 0.0 < near_full_scale <= 1.0:
+        raise ValueError("near_full_scale must be in (0, 1]")
+    components = np.concatenate((samples.real, samples.imag)).astype(np.float64, copy=False)
+    peak = float(np.max(np.abs(components)))
+    rms = float(np.sqrt(np.mean(np.square(components))))
+    floor = np.finfo(np.float64).tiny
+    peak_dbfs = 20.0 * np.log10(max(peak, floor))
+    rms_dbfs = 20.0 * np.log10(max(rms, floor))
+    clipping_percent = 100.0 * float(np.count_nonzero(np.abs(components) >= near_full_scale)) / components.size
+    return RxAdcMetrics(peak_dbfs, rms_dbfs, max(0.0, -peak_dbfs), clipping_percent, clipping_percent > 0.0)
+
+
+def generate_baseband_chirp(params: FmcwParameters, amplitude: float = 0.05) -> np.ndarray:
     """Return a centered, complex up-chirp. It is a generated reference, not RF measurement."""
     params.validate()
     if not 0.0 < amplitude <= 2047.0 / 2048.0:

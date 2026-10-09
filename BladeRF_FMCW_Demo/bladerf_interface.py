@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import ctypes as ct
 import os
+import threading
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -131,6 +132,8 @@ class BladeRFInterface:
         self._tx_enabled = False
         self._rx_configured = False
         self._tx_configured = False
+        self._control_lock = threading.RLock()
+        self._applied_tx_gain_db: int | None = None
 
     def _load_library(self) -> None:
         if self._lib is not None:
@@ -300,7 +303,28 @@ class BladeRFInterface:
             (info.tx_frequency_range_hz, info.tx_sample_rate_range_sps, info.tx_bandwidth_range_hz, info.tx_gain_range_db),
         )
         self._tx_configured = True
+        self._applied_tx_gain_db = gain_db
         return TxConfiguration(center_frequency_hz, sample_rate_sps, actual_rate, bandwidth_hz, actual_bandwidth, gain_db)
+
+    def set_tx_gain(self, gain_db: int) -> int:
+        """Apply TX0 hardware gain with control/stream access serialised.
+
+        The returned dB value is the accepted hardware gain setting, not a
+        calibrated RF output level in dBm.
+        """
+        info = self.device_info()
+        low, high = info.tx_gain_range_db
+        if not low <= gain_db <= high:
+            raise ValueError(f"Requested TX gain {gain_db} dB is outside hardware range {low}..{high} dB")
+        assert self._lib is not None
+        with self._control_lock:
+            self._check("bladerf_set_gain(TX0)", self._lib.bladerf_set_gain(self._dev, BLADERF_CHANNEL_TX0, gain_db))
+            self._applied_tx_gain_db = gain_db
+        return gain_db
+
+    @property
+    def applied_tx_gain_db(self) -> int | None:
+        return self._applied_tx_gain_db
 
     def configure_device(self, center_frequency_hz: int, sample_rate_sps: int, bandwidth_hz: int,
                          rx_gain_db: int, tx_gain_db: int | None = None) -> tuple[RxConfiguration, TxConfiguration | None]:
@@ -367,16 +391,23 @@ class BladeRFInterface:
         if samples.dtype != np.int16 or samples.ndim != 1 or samples.size % 2:
             raise ValueError("TX samples must be an even-length one-dimensional int16 array")
         assert self._lib is not None
-        self._check("bladerf_sync_tx", self._lib.bladerf_sync_tx(
-            self._dev, ct.c_void_p(samples.ctypes.data), samples.size // 2, None, 1000
-        ))
+        with self._control_lock:
+            self._check("bladerf_sync_tx", self._lib.bladerf_sync_tx(
+                self._dev, ct.c_void_p(samples.ctypes.data), samples.size // 2, None, 1000
+            ))
+
+    def disable_tx(self) -> None:
+        """Immediately disable TX0 while preserving RX streaming, if active."""
+        if not self._tx_enabled or not self._dev.value:
+            return
+        assert self._lib is not None
+        with self._control_lock:
+            self._check("bladerf_enable_module(TX0, false)", self._lib.bladerf_enable_module(self._dev, BLADERF_CHANNEL_TX0, False))
+            self._tx_enabled = False
 
     def stop_streaming(self) -> None:
         # Disable TX first to stop RF emission immediately.
-        if self._tx_enabled and self._dev.value:
-            assert self._lib is not None
-            self._check("bladerf_enable_module(TX0, false)", self._lib.bladerf_enable_module(self._dev, BLADERF_CHANNEL_TX0, False))
-        self._tx_enabled = False
+        self.disable_tx()
         if self._rx_enabled and self._dev.value:
             assert self._lib is not None
             self._check("bladerf_enable_module(RX0, false)", self._lib.bladerf_enable_module(self._dev, BLADERF_CHANNEL_RX0, False))

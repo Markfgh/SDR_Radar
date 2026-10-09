@@ -62,6 +62,28 @@ Run the explicit RX-only hardware smoke test (it configures 2.4 GHz / 20 MS/s /
 RX tuning or hardware capability reporting does not establish antenna
 compatibility or legal transmit authorization.
 
+## TX level and RX ADC monitor
+
+- **TX Hardware Gain [dB]** is a slider constrained to the gain range queried
+  from the connected device. It is a hardware gain setting, **not calibrated
+  output power in dBm**. The selected gain is applied when TX starts; changing
+  it during TX calls `bladerf_set_gain(TX0)` safely between TX transfers.
+- **TX Digital Amplitude [%]** is a separate 1–100% waveform scale. It defaults
+  to 5% (`0.05` full scale) and is applied to the generated chirp before SC16_Q11
+  conversion. Changing it during TX atomically updates the repeated waveform.
+- RX and TX gains are reset to the hardware-reported minimum on connection.
+- The RX ADC monitor is computed from real, pre-DSP SC16_Q11 I/Q samples.
+  `0 dBFS` equals a full-scale *individual I or Q component* (`|2048|`);
+  RMS is calculated over all I/Q components; clipping is the percentage at or
+  above 99% full scale. Headroom is digital peak margin only.
+- Green is below −12 dBFS, yellow is −12 to −3 dBFS, red is above −3 dBFS, and
+  any near-full-scale component is **CRITICAL**. Eight consecutive monitor
+  updates (about one second) with clipping automatically disable TX while
+  preserving RX for diagnosis.
+
+The monitor is not RF power in dBm and is not guaranteed hardware protection:
+analogue compression or damaging RF input can occur before ADC clipping.
+
 ## Technical notes
 
 - The wrapper is derived from the locally installed Nuand `libbladeRF.h` for
