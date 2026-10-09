@@ -1,0 +1,15 @@
+{
+  "hardware_state": "BLOCKED_POSITION_AND_INTERSWEEP_PHASE",
+  "origin": "SIMULATED",
+  "peak_error_m": 1.6653345369377348e-16,
+  "peak_m": [
+    0.20000000000000018,
+    20.0,
+    0.0
+  ],
+  "target_m": [
+    0.2,
+    20.0,
+    0.0
+  ]
+}

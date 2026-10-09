@@ -1,0 +1,404 @@
+{
+  "utc": "2026-10-09T20:40:45.507325+00:00",
+  "origin": "OFFLINE",
+  "tests_run": 66,
+  "successful": true,
+  "tests": [
+    {
+      "test_id": "test_adc_monitor.RxAdcMetricsTests.test_half_scale_component_has_six_db_headroom",
+      "status": "PASS",
+      "duration_s": 0.0002075000002150773,
+      "error": null
+    },
+    {
+      "test_id": "test_adc_monitor.RxAdcMetricsTests.test_near_full_scale_component_reports_clipping",
+      "status": "PASS",
+      "duration_s": 4.0800000533636194e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_adc_monitor.RxAdcMetricsTests.test_safe_gui_defaults_do_not_enable_tx",
+      "status": "PASS",
+      "duration_s": 0.3436461999999665,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_boundary_alignment_uses_wired_reference",
+      "status": "PASS",
+      "duration_s": 0.0034899000002042158,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_chirp_has_expected_length_and_headroom",
+      "status": "PASS",
+      "duration_s": 0.00045120000049792,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_dc_offset_is_removed_before_dechirping",
+      "status": "PASS",
+      "duration_s": 0.00870429999940825,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_noise_only_input_is_unsynced_and_has_no_target_peaks",
+      "status": "PASS",
+      "duration_s": 0.009952300000804826,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_one_hundred_percent_chirp_is_limited_to_sc16_positive_full_scale",
+      "status": "PASS",
+      "duration_s": 0.0004567000005408772,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_single_delayed_chirp_has_negative_beat_and_correct_range",
+      "status": "PASS",
+      "duration_s": 0.008957500000178698,
+      "error": null
+    },
+    {
+      "test_id": "test_fmcw.FmcwTests.test_two_resolvable_delayed_targets_are_reported",
+      "status": "PASS",
+      "duration_s": 0.007892900000115333,
+      "error": null
+    },
+    {
+      "test_id": "test_sc16_conversion.Sc16ConversionTests.test_sc16_q11_conversion_and_scale",
+      "status": "PASS",
+      "duration_s": 0.0005823000001328182,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_colocated_echo_is_not_identifiable_as_reference",
+      "status": "PASS",
+      "duration_s": 0.07878789999995206,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_complex_transfer_deembeds_cable_and_interpolates_drift",
+      "status": "PASS",
+      "duration_s": 0.0003592000002754503,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_echo_reference_bias_matches_independent_projection",
+      "status": "PASS",
+      "duration_s": 0.003696499999932712,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_gls_empty_support_finite",
+      "status": "PASS",
+      "duration_s": 0.00010539999948377954,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_gls_null_mask_and_bounded_gain",
+      "status": "PASS",
+      "duration_s": 6.329999996523838e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_paper_gls_exact_on_valid_support",
+      "status": "PASS",
+      "duration_s": 0.00014599999940401176,
+      "error": null
+    },
+    {
+      "test_id": "test_calibration_gls.CalibrationGlsTests.test_window_and_overlap_tradeoffs_are_separate",
+      "status": "PASS",
+      "duration_s": 0.2753533000004609,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_cli_dry_run_does_not_open_radio_and_real_stacking_blocks",
+      "status": "PASS",
+      "duration_s": 0.06462859999919601,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_header_enum_is_checked_instead_of_guessed",
+      "status": "PASS",
+      "duration_s": 0.0027977999998256564,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_invalid_burst_and_tx_api_failure_force_off",
+      "status": "PASS",
+      "duration_s": 0.0015134000004763948,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_metadata_rx_setup_never_enables_tx",
+      "status": "PASS",
+      "duration_s": 0.0002884999994421378,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_motion_pipeline_and_independent_phase_validation",
+      "status": "PASS",
+      "duration_s": 0.12246169999980339,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_overlap_weights_and_excluded_bands",
+      "status": "PASS",
+      "duration_s": 0.01325859999997192,
+      "error": null
+    },
+    {
+      "test_id": "test_hardware_mock_cli.HardwareMockTests.test_scheduled_metadata_flags_and_timestamp",
+      "status": "PASS",
+      "duration_s": 0.0007408999999825028,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_component_sc16_roundtrip_and_saturation",
+      "status": "PASS",
+      "duration_s": 0.0001305999994656304,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_czt_non_bin_frequencies_against_direct_dft",
+      "status": "PASS",
+      "duration_s": 0.0008476000002701767,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_fractional_delay_against_sinc_sum",
+      "status": "PASS",
+      "duration_s": 0.0008250999999290798,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_instantaneous_frequency",
+      "status": "PASS",
+      "duration_s": 0.00026760000037029386,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_integer_delay_no_wrap",
+      "status": "PASS",
+      "duration_s": 0.00018929999987449264,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_invalid_configs",
+      "status": "PASS",
+      "duration_s": 0.00038830000084999483,
+      "error": null
+    },
+    {
+      "test_id": "test_math.MathematicalTests.test_linear_correlation_against_direct_convolution",
+      "status": "PASS",
+      "duration_s": 0.00021490000017365674,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_digital_reset_detected_by_independent_target",
+      "status": "PASS",
+      "duration_s": 0.013294100000166509,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_fractional_target_range_without_oracle_stacking",
+      "status": "PASS",
+      "duration_s": 0.04974860000038461,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_full_spectrum_matches_independent_dft_sum",
+      "status": "PASS",
+      "duration_s": 0.0440773000000263,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_hidden_phase_jump_fails_independent_echo_validation",
+      "status": "PASS",
+      "duration_s": 0.014216300000043702,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_large_endpoint_drift_is_rejected",
+      "status": "PASS",
+      "duration_s": 0.0022417000000132248,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_missing_reference_is_rejected",
+      "status": "PASS",
+      "duration_s": 0.0016048999996201019,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_phase_residual_against_independent_ideal_echoes",
+      "status": "PASS",
+      "duration_s": 1.7400000615452882e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_seed_is_reproducible",
+      "status": "PASS",
+      "duration_s": 0.04806989999997313,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_stream_faults_and_hardware_epoch_rejected",
+      "status": "PASS",
+      "duration_s": 0.0007872000005590962,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_two_targets_resolved_only_with_calibrated_synthetic_band",
+      "status": "PASS",
+      "duration_s": 1.9699999938893598e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_wrong_phase_sign_fails_known_echo",
+      "status": "PASS",
+      "duration_s": 0.013742900000579539,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_wrong_reference_delay_fails_absolute_range",
+      "status": "PASS",
+      "duration_s": 0.013295300000208954,
+      "error": null
+    },
+    {
+      "test_id": "test_stacking.StackingTests.test_zero_padding_does_not_change_bandwidth",
+      "status": "PASS",
+      "duration_s": 0.0167767000002641,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_burst_requires_arm_and_budget",
+      "status": "PASS",
+      "duration_s": 0.012900400000035006,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_capture_never_overwritten",
+      "status": "PASS",
+      "duration_s": 0.016238899999734713,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_corruption_and_path_escape_rejected",
+      "status": "PASS",
+      "duration_s": 0.046212199999899894,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_disk_failure_disables_tx",
+      "status": "PASS",
+      "duration_s": 0.02041209999970306,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_faults_always_disable_tx_and_save_abort",
+      "status": "PASS",
+      "duration_s": 0.05943270000079792,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_manual_requires_independent_readback",
+      "status": "PASS",
+      "duration_s": 0.012037500000587897,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_missing_dll_has_no_simulation_fallback",
+      "status": "PASS",
+      "duration_s": 0.01189669999985199,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_mock_triplets_have_no_inner_retune",
+      "status": "PASS",
+      "duration_s": 0.0722330000007787,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_permit_rejects_ota_missing_preflight_band_and_overload",
+      "status": "PASS",
+      "duration_s": 0.012335499999608146,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_real_switch_sequence_blocked",
+      "status": "PASS",
+      "duration_s": 0.01839879999988625,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_replay_raw_byte_stable_and_results_identical",
+      "status": "PASS",
+      "duration_s": 0.07199709999986226,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_switch_failure_disables_tx",
+      "status": "PASS",
+      "duration_s": 0.01963419999992766,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_timeout_and_ctrl_c_disable_tx",
+      "status": "PASS",
+      "duration_s": 0.027573800000027404,
+      "error": null
+    },
+    {
+      "test_id": "test_storage_safety.StorageSafetyTests.test_windows_manifest_lock_has_bounded_atomic_retry",
+      "status": "PASS",
+      "duration_s": 0.03383739999935642,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.GuiTests.test_diagnostic_gui_offscreen_without_radio",
+      "status": "PASS",
+      "duration_s": 0.27361279999968247,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.MotionSarTests.test_backprojection_focus_known_target_and_phase_gate",
+      "status": "PASS",
+      "duration_s": 0.04531409999981406,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.MotionSarTests.test_motion_phase_sign_and_baseband_delay",
+      "status": "PASS",
+      "duration_s": 0.0004856000005020178,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.TimingTests.test_api_errors_surfaced",
+      "status": "PASS",
+      "duration_s": 0.0004617000004145666,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.TimingTests.test_continuity_gap_short_buffer_and_overrun",
+      "status": "PASS",
+      "duration_s": 1.9600000086938962e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.TimingTests.test_metadata_abi",
+      "status": "PASS",
+      "duration_s": 2.6300000172341242e-05,
+      "error": null
+    },
+    {
+      "test_id": "test_timing_sar_gui.TimingTests.test_metadata_mock_truncates_undefined_tail",
+      "status": "PASS",
+      "duration_s": 0.00031519999993179226,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+schema_version: 1
+seed: 20261012
+fs_sps: 40000000
+bi_hz: 12000000
+bs_hz: 12000000
+tp_s: 0.0000256
+capture_samples: 2048
+centers_hz: [2400000000, 2412000000, 2424000000, 2436000000, 2448000000, 2460000000, 2472000000, 2484000000]
+targets:
+  - {range_m: 20.0, amplitude: 0.5, phase_rad: 0.0}
+  - {range_m: 24.0, amplitude: 0.45, phase_rad: 0.0}
+noise_rms: 0.0003
+topology: switched
+gls_mode: stable

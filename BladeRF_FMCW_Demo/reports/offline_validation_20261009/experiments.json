@@ -1,0 +1,442 @@
+{
+  "contamination": [
+    {
+      "complex_bias_imag": 0.006442176872376911,
+      "complex_bias_real": 0.007648421872844885,
+      "delay_in_inverse_bandwidth": 0,
+      "echo_reference_ratio": 0.01,
+      "identifiable": false,
+      "independent_echo_amplitude_ratio": 0.9923893512021364,
+      "independent_echo_phase_residual_rad": -0.00639319127799086,
+      "phase_bias_rad": 0.006393191277990864,
+      "phase_bound_rad": 0.010000166674167114,
+      "projection_snr_db": 304.1486227436716,
+      "relative_contamination": 0.01
+    },
+    {
+      "complex_bias_imag": 0.06442176872376912,
+      "complex_bias_real": 0.07648421872844888,
+      "delay_in_inverse_bandwidth": 0,
+      "echo_reference_ratio": 0.1,
+      "identifiable": false,
+      "independent_echo_amplitude_ratio": 0.9272909811638017,
+      "independent_echo_phase_residual_rad": -0.05977331227196997,
+      "phase_bias_rad": 0.05977331227197,
+      "phase_bound_rad": 0.10016742116155983,
+      "projection_snr_db": 304.737943935483,
+      "relative_contamination": 0.10000000000000003
+    },
+    {
+      "complex_bias_imag": 0.32210884361884556,
+      "complex_bias_real": 0.38242109364224425,
+      "delay_in_inverse_bandwidth": 0,
+      "echo_reference_ratio": 0.5,
+      "identifiable": false,
+      "independent_echo_amplitude_ratio": 0.7044975419758768,
+      "independent_echo_phase_residual_rad": -0.22891903225526491,
+      "phase_bias_rad": 0.22891903225526483,
+      "phase_bound_rad": 0.5235987755982989,
+      "projection_snr_db": 307.12467500905757,
+      "relative_contamination": 0.5
+    },
+    {
+      "complex_bias_imag": 0.6442176872376911,
+      "complex_bias_real": 0.7648421872844885,
+      "delay_in_inverse_bandwidth": 0,
+      "echo_reference_ratio": 1.0,
+      "identifiable": false,
+      "independent_echo_amplitude_ratio": 0.5322700916917477,
+      "independent_echo_phase_residual_rad": -0.3500000000000001,
+      "phase_bias_rad": 0.35,
+      "phase_bound_rad": null,
+      "projection_snr_db": 309.55962337636936,
+      "relative_contamination": 1.0
+    },
+    {
+      "complex_bias_imag": 0.006338273479063509,
+      "complex_bias_real": 0.00752038907880705,
+      "delay_in_inverse_bandwidth": 0.1,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9925161052015674,
+      "independent_echo_phase_residual_rad": -0.006290880000835892,
+      "phase_bias_rad": 0.006290880000835886,
+      "phase_bound_rad": 0.009835297740697678,
+      "projection_snr_db": 54.91977079065724,
+      "relative_contamination": 0.009835139175021377
+    },
+    {
+      "complex_bias_imag": 0.06338273479063507,
+      "complex_bias_real": 0.07520389078807052,
+      "delay_in_inverse_bandwidth": 0.1,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9284443648419666,
+      "independent_echo_phase_residual_rad": -0.05888136080383595,
+      "phase_bias_rad": 0.058881360803835915,
+      "phase_bound_rad": 0.09851064470682308,
+      "projection_snr_db": 35.499404350635665,
+      "relative_contamination": 0.09835139175021378
+    },
+    {
+      "complex_bias_imag": 0.31691367395317543,
+      "complex_bias_real": 0.3760194539403525,
+      "delay_in_inverse_bandwidth": 0.1,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.7081940182543832,
+      "independent_echo_phase_residual_rad": -0.2263646104322277,
+      "phase_bias_rad": 0.22636461043222772,
+      "phase_bound_rad": 0.5141063998137111,
+      "projection_snr_db": 23.872076873017207,
+      "relative_contamination": 0.4917569587510689
+    },
+    {
+      "complex_bias_imag": 0.6338273479063509,
+      "complex_bias_real": 0.752038907880705,
+      "delay_in_inverse_bandwidth": 0.1,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.5367216098956437,
+      "independent_echo_phase_residual_rad": -0.34711770177287216,
+      "phase_bias_rad": 0.3471177017728721,
+      "phase_bound_rad": 1.3889635399239988,
+      "projection_snr_db": 20.2595404126004,
+      "relative_contamination": 0.9835139175021378
+    },
+    {
+      "complex_bias_imag": 0.004108276192037555,
+      "complex_bias_real": 0.004862356888085176,
+      "delay_in_inverse_bandwidth": 0.5,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9951528542742936,
+      "independent_echo_phase_residual_rad": -0.004088374168038806,
+      "phase_bias_rad": 0.004088374168038813,
+      "phase_bound_rad": 0.0063656103471096395,
+      "projection_snr_db": 42.29830326993712,
+      "relative_contamination": 0.006365567357052468
+    },
+    {
+      "complex_bias_imag": 0.04108276192037554,
+      "complex_bias_real": 0.04862356888085176,
+      "delay_in_inverse_bandwidth": 0.5,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9529000320823605,
+      "independent_echo_phase_residual_rad": -0.03915777135594672,
+      "phase_bias_rad": 0.039157771355946704,
+      "phase_bound_rad": 0.06369874142089728,
+      "projection_snr_db": 22.675152298065072,
+      "relative_contamination": 0.06365567357052468
+    },
+    {
+      "complex_bias_imag": 0.20541380960187777,
+      "complex_bias_real": 0.2431178444042588,
+      "delay_in_inverse_bandwidth": 0.5,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.7936665890900123,
+      "independent_echo_phase_residual_rad": -0.1637610453379607,
+      "phase_bias_rad": 0.1637610453379608,
+      "phase_bound_rad": 0.3239128594669416,
+      "projection_snr_db": 10.283937078036399,
+      "relative_contamination": 0.3182783678526234
+    },
+    {
+      "complex_bias_imag": 0.41082761920375555,
+      "complex_bias_real": 0.4862356888085176,
+      "delay_in_inverse_bandwidth": 0.5,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.6485204511702657,
+      "independent_echo_phase_residual_rad": -0.2696873627329793,
+      "phase_bias_rad": 0.2696873627329794,
+      "phase_bound_rad": 0.6900253533729598,
+      "projection_snr_db": 6.017625606168795,
+      "relative_contamination": 0.6365567357052468
+    },
+    {
+      "complex_bias_imag": 2.0832279394856443e-05,
+      "complex_bias_real": 2.456533488515099e-05,
+      "delay_in_inverse_bandwidth": 1,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9999754350515797,
+      "independent_echo_phase_residual_rad": -2.0831767652503932e-05,
+      "phase_bias_rad": 2.0831767652494334e-05,
+      "phase_bound_rad": 3.220930833103587e-05,
+      "projection_snr_db": 40.0001549162716,
+      "relative_contamination": 3.220930832546667e-05
+    },
+    {
+      "complex_bias_imag": 0.00020832279394856305,
+      "complex_bias_real": 0.00024565334885151297,
+      "delay_in_inverse_bandwidth": 1,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9997543852986869,
+      "independent_echo_phase_residual_rad": -0.00020827162831345798,
+      "phase_bias_rad": 0.00020827162831345286,
+      "phase_bound_rad": 0.0003220930888238701,
+      "projection_snr_db": 20.00207518944693,
+      "relative_contamination": 0.00032209308325466815
+    },
+    {
+      "complex_bias_imag": 0.0010416139697428065,
+      "complex_bias_real": 0.001228266744257564,
+      "delay_in_inverse_bandwidth": 1,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9987726995588366,
+      "independent_echo_phase_residual_rad": -0.0010403357841172174,
+      "phase_bias_rad": 0.001040335784117193,
+      "phase_bound_rad": 0.0016104661124243572,
+      "projection_snr_db": 6.031208201673268,
+      "relative_contamination": 0.0016104654162733343
+    },
+    {
+      "complex_bias_imag": 0.002083227939485613,
+      "complex_bias_real": 0.002456533488515128,
+      "delay_in_inverse_bandwidth": 1,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 0.9975473322813454,
+      "independent_echo_phase_residual_rad": -0.002078119969323019,
+      "phase_bias_rad": 0.0020781199693229737,
+      "phase_bound_rad": 0.0032209364017743523,
+      "projection_snr_db": 0.021271314466941534,
+      "relative_contamination": 0.0032209308325466686
+    },
+    {
+      "complex_bias_imag": -4.208487598407701e-05,
+      "complex_bias_real": -4.9345186108600105e-05,
+      "delay_in_inverse_bandwidth": 2,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0000493467354767,
+      "independent_echo_phase_residual_rad": 4.208695274773512e-05,
+      "phase_bias_rad": -4.208695274774461e-05,
+      "phase_bound_rad": 6.485433049985613e-05,
+      "projection_snr_db": 39.999619575495096,
+      "relative_contamination": 6.485433045439234e-05
+    },
+    {
+      "complex_bias_imag": -0.00042084875984076917,
+      "complex_bias_real": -0.0004934518610859971,
+      "delay_in_inverse_bandwidth": 2,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0004936067879848,
+      "independent_echo_phase_residual_rad": 0.00042105650608676245,
+      "phase_bias_rad": -0.0004210565060867599,
+      "phase_bound_rad": 0.000648543350007724,
+      "projection_snr_db": 19.995761828933524,
+      "relative_contamination": 0.0006485433045439198
+    },
+    {
+      "complex_bias_imag": -0.0021042437992038546,
+      "complex_bias_real": -0.0024672593054299932,
+      "delay_in_inverse_bandwidth": 2,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.002471131348488,
+      "independent_echo_phase_residual_rad": 0.002109445226441099,
+      "phase_bias_rad": -0.002109445226441118,
+      "phase_bound_rad": 0.0032427222057209446,
+      "projection_snr_db": 5.999210600864471,
+      "relative_contamination": 0.0032427165227196107
+    },
+    {
+      "complex_bias_imag": -0.004208487598407709,
+      "complex_bias_real": -0.0049345186108599864,
+      "delay_in_inverse_bandwidth": 2,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.004950000870077,
+      "independent_echo_phase_residual_rad": 0.004229332224191478,
+      "phase_bias_rad": -0.00422933222419148,
+      "phase_bound_rad": 0.006485478510095294,
+      "projection_snr_db": -0.042840912869238454,
+      "relative_contamination": 0.0064854330454392215
+    },
+    {
+      "complex_bias_imag": -8.476814296576019e-05,
+      "complex_bias_real": -9.81759617707745e-05,
+      "delay_in_inverse_bandwidth": 4,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.000098182007359,
+      "independent_echo_phase_residual_rad": 8.477646577376288e-05,
+      "phase_bias_rad": -8.477646577374545e-05,
+      "phase_bound_rad": 0.00012970797055628807,
+      "projection_snr_db": 39.99975117803244,
+      "relative_contamination": 0.0001297079701925835
+    },
+    {
+      "complex_bias_imag": -0.0008476814296576026,
+      "complex_bias_real": -0.0009817596177077428,
+      "delay_in_inverse_bandwidth": 4,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0009823640748805,
+      "independent_echo_phase_residual_rad": 0.0008485142632594252,
+      "phase_bias_rad": -0.0008485142632594197,
+      "phase_bound_rad": 0.0012970800656306634,
+      "projection_snr_db": 19.99207541668113,
+      "relative_contamination": 0.001297079701925834
+    },
+    {
+      "complex_bias_imag": -0.004238407148288013,
+      "complex_bias_real": -0.004908798088538724,
+      "delay_in_inverse_bandwidth": 4,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0049238977485426,
+      "independent_echo_phase_residual_rad": 0.004259289510041446,
+      "phase_bias_rad": -0.004259289510041427,
+      "phase_bound_rad": 0.006485443973558928,
+      "projection_snr_db": 5.978540364426057,
+      "relative_contamination": 0.006485398509629177
+    },
+    {
+      "complex_bias_imag": -0.008476814296576027,
+      "complex_bias_real": -0.009817596177077448,
+      "delay_in_inverse_bandwidth": 4,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0098779315605195,
+      "independent_echo_phase_residual_rad": 0.008560652248566461,
+      "phase_bias_rad": -0.008560652248566494,
+      "phase_bound_rad": 0.012971160751350649,
+      "projection_snr_db": -0.08477370271787102,
+      "relative_contamination": 0.012970797019258355
+    },
+    {
+      "complex_bias_imag": -0.00016052409980614655,
+      "complex_bias_real": -0.0001813538371935032,
+      "delay_in_inverse_bandwidth": 8,
+      "echo_reference_ratio": 0.01,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.000181373841368,
+      "independent_echo_phase_residual_rad": 0.00016055321536849994,
+      "phase_bias_rad": -0.0001605532153685329,
+      "phase_bound_rad": 0.00024219248962399818,
+      "projection_snr_db": 40.000837994687316,
+      "relative_contamination": 0.0002421924872562759
+    },
+    {
+      "complex_bias_imag": -0.0016052409980614666,
+      "complex_bias_real": -0.0018135383719350326,
+      "delay_in_inverse_bandwidth": 8,
+      "echo_reference_ratio": 0.1,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0018155378367788,
+      "independent_echo_phase_residual_rad": 0.0016081560669902798,
+      "phase_bias_rad": -0.0016081560669902455,
+      "phase_bound_rad": 0.0024219272402912395,
+      "projection_snr_db": 19.98665798153711,
+      "relative_contamination": 0.00242192487256276
+    },
+    {
+      "complex_bias_imag": -0.00802620499030733,
+      "complex_bias_real": -0.009067691859675174,
+      "delay_in_inverse_bandwidth": 8,
+      "echo_reference_ratio": 0.5,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0091175665918772,
+      "independent_echo_phase_residual_rad": 0.008099473004709121,
+      "phase_bias_rad": -0.008099473004709092,
+      "phase_bound_rad": 0.012109920347624764,
+      "projection_snr_db": 5.94417783061969,
+      "relative_contamination": 0.012109624362813806
+    },
+    {
+      "complex_bias_imag": -0.01605240998061466,
+      "complex_bias_real": -0.018135383719350348,
+      "delay_in_inverse_bandwidth": 8,
+      "echo_reference_ratio": 1.0,
+      "identifiable": null,
+      "independent_echo_amplitude_ratio": 1.0183342661308805,
+      "independent_echo_phase_residual_rad": 0.016347447240173032,
+      "phase_bias_rad": -0.01634744724017301,
+      "phase_bound_rad": 0.024221617073053297,
+      "projection_snr_db": -0.15539390847903828,
+      "relative_contamination": 0.024219248725627612
+    }
+  ],
+  "suppression": {
+    "gls_hamming": {
+      "coverage": 1.0,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -44.92428094736916,
+        "psl_db": -42.67811989943107,
+        "range_error_m": 0.0,
+        "width_6db_m": 2.8332403089213973
+      },
+      "span_hz": 96000000.0,
+      "steps": 8
+    },
+    "gls_rect": {
+      "coverage": 1.0,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -27.431619005884063,
+        "psl_db": -13.44305979475563,
+        "range_error_m": 0.0,
+        "width_6db_m": 1.875436867375556
+      },
+      "span_hz": 96000000.0,
+      "steps": 8
+    },
+    "nonuniform": {
+      "coverage": 0.9963379899633799,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -25.676685164210884,
+        "psl_db": -13.458909205043572,
+        "range_error_m": 0.0,
+        "width_6db_m": 1.8761840254580289
+      },
+      "span_hz": 96000000.0,
+      "steps": 8
+    },
+    "overlap": {
+      "coverage": 1.0,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -29.68989877044228,
+        "psl_db": -13.658792335425787,
+        "range_error_m": 0.0,
+        "width_6db_m": 1.9893349077900493
+      },
+      "span_hz": 96000000.0,
+      "steps": 15
+    },
+    "pulse_tukey": {
+      "coverage": 1.0,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -20.60471225897555,
+        "psl_db": -13.37891275964811,
+        "range_error_m": 0.0,
+        "width_6db_m": 1.8767064904788242
+      },
+      "span_hz": 96000000.0,
+      "steps": 8
+    },
+    "uniform_raw": {
+      "coverage": 1.0,
+      "psf": {
+        "peak_range_m": 0.0,
+        "pgl_db": -25.65145802038485,
+        "psl_db": -13.426624969513014,
+        "range_error_m": 0.0,
+        "width_6db_m": 1.8757880710252302
+      },
+      "span_hz": 96000000.0,
+      "steps": 8
+    }
+  }
+}

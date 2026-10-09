@@ -1,0 +1,284 @@
+{
+  "corrected": {
+    "processing": {
+      "calibration": [
+        {
+          "drift_rms_rad": 0.040610212353638445,
+          "snr_db": 41.77954130107861,
+          "step": 0,
+          "transfer_phase_rad": 2.039729473622359
+        },
+        {
+          "drift_rms_rad": 0.040673922661822924,
+          "snr_db": 41.33431148434351,
+          "step": 1,
+          "transfer_phase_rad": -0.6126321050142837
+        },
+        {
+          "drift_rms_rad": 0.04084055848476149,
+          "snr_db": 39.57859257644695,
+          "step": 2,
+          "transfer_phase_rad": 1.2281542199184323
+        },
+        {
+          "drift_rms_rad": 0.04057466596103685,
+          "snr_db": 41.84521806854558,
+          "step": 3,
+          "transfer_phase_rad": -1.652871182650217
+        },
+        {
+          "drift_rms_rad": 0.04077279268865473,
+          "snr_db": 41.741891888127405,
+          "step": 4,
+          "transfer_phase_rad": -3.1200005052905806
+        },
+        {
+          "drift_rms_rad": 0.04104681575043527,
+          "snr_db": 39.819825320408626,
+          "step": 5,
+          "transfer_phase_rad": 2.73853402157431
+        },
+        {
+          "drift_rms_rad": 0.0406497134267431,
+          "snr_db": 41.557939380107136,
+          "step": 6,
+          "transfer_phase_rad": -0.6031193437221293
+        },
+        {
+          "drift_rms_rad": 0.04041776171941351,
+          "snr_db": 41.71874322134386,
+          "step": 7,
+          "transfer_phase_rad": 1.6895990402810503
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "df_hz": 13020.833333333334,
+      "gls": {
+        "capped_bins": 0,
+        "dc_normalized": true,
+        "masked_fraction": 0.7506425865800865,
+        "max_gain": 1.09257358428458,
+        "mode": "stable"
+      },
+      "ifft_scale": 9.625,
+      "motion_corrected": true,
+      "origin": [
+        "SIMULATED"
+      ],
+      "overlap_normalized": false,
+      "range_sample_spacing_m": 0.38934085454545453,
+      "resolution_ideal_m": 1.5614190520833333,
+      "single_resolution_ideal_m": 12.491352416666667,
+      "synthetic_span_hz": 96000000.0,
+      "unambiguous_period_m": 11512.030387199999
+    },
+    "psf": {
+      "peak_range_m": 0.0,
+      "pgl_db": -27.431619005884063,
+      "psl_db": -13.44305979475563,
+      "range_error_m": 0.0,
+      "width_6db_m": 1.875436867375556
+    },
+    "two_targets": {
+      "errors_m": [
+        -0.1436164181818178,
+        0.13913298181818234
+      ],
+      "peak_ranges_m": [
+        19.856383581818182,
+        24.139132981818182
+      ],
+      "resolved": true,
+      "valley_db": 17.010671943632808
+    }
+  },
+  "ideal": {
+    "processing": {
+      "calibration": [
+        {
+          "drift_rms_rad": 1.0620043340143502e-19,
+          "snr_db": 272.0421769665327,
+          "step": 0,
+          "transfer_phase_rad": 0.0009624149885964335
+        },
+        {
+          "drift_rms_rad": 1.1430278746116187e-19,
+          "snr_db": 272.04189768450635,
+          "step": 1,
+          "transfer_phase_rad": 0.0005971518371092726
+        },
+        {
+          "drift_rms_rad": 1.1003371308016186e-19,
+          "snr_db": 272.0416733612758,
+          "step": 2,
+          "transfer_phase_rad": 0.0016381495225504094
+        },
+        {
+          "drift_rms_rad": 1.108896264534929e-19,
+          "snr_db": 272.04256616220783,
+          "step": 3,
+          "transfer_phase_rad": 0.00010025848802518096
+        },
+        {
+          "drift_rms_rad": 1.0874113491925157e-19,
+          "snr_db": 272.0433855072724,
+          "step": 4,
+          "transfer_phase_rad": 0.003989741176711237
+        },
+        {
+          "drift_rms_rad": 1.1562248909478155e-19,
+          "snr_db": 272.0417428711214,
+          "step": 5,
+          "transfer_phase_rad": 0.0013642278230791933
+        },
+        {
+          "drift_rms_rad": 1.0911592330706047e-19,
+          "snr_db": 272.0418938932241,
+          "step": 6,
+          "transfer_phase_rad": 0.0013442274416165458
+        },
+        {
+          "drift_rms_rad": 1.060823619410667e-19,
+          "snr_db": 272.04189831638644,
+          "step": 7,
+          "transfer_phase_rad": 0.0005280319114479886
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "df_hz": 13020.833333333334,
+      "gls": {
+        "capped_bins": 0,
+        "dc_normalized": true,
+        "masked_fraction": 0.7506425865800865,
+        "max_gain": 1.09257358428458,
+        "mode": "stable"
+      },
+      "ifft_scale": 9.625,
+      "motion_corrected": false,
+      "origin": [
+        "SIMULATED"
+      ],
+      "overlap_normalized": false,
+      "range_sample_spacing_m": 0.38934085454545453,
+      "resolution_ideal_m": 1.5614190520833333,
+      "single_resolution_ideal_m": 12.491352416666667,
+      "synthetic_span_hz": 96000000.0,
+      "unambiguous_period_m": 11512.030387199999
+    },
+    "psf": {
+      "peak_range_m": 0.0,
+      "pgl_db": -27.431619005884063,
+      "psl_db": -13.44305979475563,
+      "range_error_m": 0.0,
+      "width_6db_m": 1.875436867375556
+    },
+    "two_targets": {
+      "errors_m": [
+        -0.1436164181818178,
+        0.13913298181818234
+      ],
+      "peak_ranges_m": [
+        19.856383581818182,
+        24.139132981818182
+      ],
+      "resolved": true,
+      "valley_db": 17.00007812757672
+    }
+  },
+  "independent_validation": {
+    "scope": "Spectral phase against static ideal SIMULATION ONLY; not a hardware KPI",
+    "status": "PASS",
+    "threshold_rad": 0.03
+  },
+  "phase_residual_corrected": {
+    "rms_rad": 0.01417793364460966,
+    "samples": 7057,
+    "valid": true
+  },
+  "phase_residual_uncorrected": {
+    "rms_rad": 1.8836298467670887,
+    "samples": 7057,
+    "valid": true
+  },
+  "single": {
+    "processing": {
+      "calibration": [
+        {
+          "drift_rms_rad": 0.0406188815037659,
+          "snr_db": 41.77954130107861,
+          "step": 0,
+          "transfer_phase_rad": 2.0419386746081205
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "df_hz": 13020.833333333334,
+      "gls": {
+        "capped_bins": 0,
+        "dc_normalized": true,
+        "masked_fraction": 0.7508116883116883,
+        "max_gain": 4.04689542995582,
+        "mode": "stable"
+      },
+      "ifft_scale": 1.203125,
+      "motion_corrected": false,
+      "origin": [
+        "SIMULATED"
+      ],
+      "overlap_normalized": false,
+      "range_sample_spacing_m": 3.1147268363636362,
+      "resolution_ideal_m": 12.491352416666667,
+      "single_resolution_ideal_m": 12.491352416666667,
+      "synthetic_span_hz": 12000000.0,
+      "unambiguous_period_m": 11512.030387199999
+    },
+    "psf": {
+      "peak_range_m": 0.0,
+      "pgl_db": -49.62679038832527,
+      "psl_db": -13.437324412187145,
+      "range_error_m": 0.0,
+      "width_6db_m": 15.014028112111639
+    },
+    "two_targets": {
+      "peak_ranges_m": [],
+      "resolved": false,
+      "valley_db": null
+    }
+  },
+  "uncorrected": {
+    "processing": {
+      "calibration": [],
+      "coverage_fraction": 1.0,
+      "df_hz": 13020.833333333334,
+      "gls": {
+        "capped_bins": 0,
+        "dc_normalized": true,
+        "masked_fraction": 0.7506425865800865,
+        "max_gain": 1.09257358428458,
+        "mode": "stable"
+      },
+      "ifft_scale": 9.625,
+      "motion_corrected": false,
+      "origin": [
+        "SIMULATED"
+      ],
+      "overlap_normalized": false,
+      "range_sample_spacing_m": 0.38934085454545453,
+      "resolution_ideal_m": 1.5614190520833333,
+      "single_resolution_ideal_m": 12.491352416666667,
+      "synthetic_span_hz": 96000000.0,
+      "unambiguous_period_m": 11512.030387199999
+    },
+    "psf": {
+      "peak_range_m": 0.0,
+      "pgl_db": -27.431619005884063,
+      "psl_db": -13.44305979475563,
+      "range_error_m": 0.0,
+      "width_6db_m": 1.875436867375556
+    },
+    "two_targets": {
+      "peak_ranges_m": [],
+      "resolved": false,
+      "valley_db": null
+    }
+  }
+}

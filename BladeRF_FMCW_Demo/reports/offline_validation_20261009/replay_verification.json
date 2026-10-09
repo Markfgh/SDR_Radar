@@ -1,0 +1,47 @@
+[
+  {
+    "test_id": "simulation_corrected_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "simulation_uncorrected_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "simulation_ideal_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "simulation_single_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "motion_corrected_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "motion_uncorrected_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "motion_ideal_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "motion_single_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  },
+  {
+    "test_id": "sar_sar_replay",
+    "status": "PASS",
+    "comparison": "array_equal, all NPZ fields"
+  }
+]

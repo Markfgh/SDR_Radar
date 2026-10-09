@@ -1,0 +1,15 @@
+{
+  "operator_approved": false,
+  "closed_terminated_loopback": false,
+  "power_budget_verified": false,
+  "environment_verified": false,
+  "topology": "closed_loopback",
+  "evidence": "",
+  "allowed_band_hz": [],
+  "digital_amplitude_max": 0.05,
+  "tx_gain_db": null,
+  "estimated_max_rx_dbm": null,
+  "verified_rx_limit_dbm": null,
+  "max_duration_s": 10,
+  "max_bursts": 10
+}

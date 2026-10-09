@@ -1,0 +1,6 @@
+# Candidate restricted SWW, hardware LO/filters/analog guards still to qualify.
+schema_version: 1
+centers_hz: [2400000000, 2412000000, 2424000000, 2436000000]
+targets:
+  - {range_m: 20, amplitude: 0.5, phase_rad: 0}
+  - {range_m: 28, amplitude: 0.4, phase_rad: 0}

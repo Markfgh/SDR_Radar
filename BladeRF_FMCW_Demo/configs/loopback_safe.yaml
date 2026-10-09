@@ -1,0 +1,9 @@
+# Preparation plan only. These are candidate RX settings, NOT RF authorization.
+schema_version: 1
+centers_hz: [2414000000]
+fs_sps: 40000000
+bi_hz: 12000000
+bs_hz: 12000000
+tp_s: 0.0000256
+capture_samples: 2048
+targets: []

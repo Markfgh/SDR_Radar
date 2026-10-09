@@ -1,0 +1,38 @@
+[
+  {
+    "evidence": "metrics.json; raw capture hashes verified",
+    "origin": "SIMULATED",
+    "status": "PASS",
+    "test_id": "OFFLINE_PROCESSING"
+  },
+  {
+    "expected": "Independent known-delay echo validation and approved KPIs",
+    "next_action": "MONDAY_TEST_PLAN.md",
+    "observed": "No qualified hardware phase evidence",
+    "status": "BLOCKED",
+    "test_id": "G1_HARDWARE_PHASE"
+  },
+  {
+    "scope": "Spectral phase against static ideal SIMULATION ONLY; not a hardware KPI",
+    "status": "PASS",
+    "test_id": "SIM_INDEPENDENT_PHASE",
+    "threshold_rad": 0.03
+  },
+  {
+    "expected": "Corrected resolves two known targets; single chirp does not",
+    "observed": {
+      "errors_m": [
+        -0.1436164181818178,
+        0.13913298181818234
+      ],
+      "peak_ranges_m": [
+        19.856383581818182,
+        24.139132981818182
+      ],
+      "resolved": true,
+      "valley_db": 17.002016174390498
+    },
+    "status": "PASS",
+    "test_id": "SIM_TWO_TARGETS"
+  }
+]

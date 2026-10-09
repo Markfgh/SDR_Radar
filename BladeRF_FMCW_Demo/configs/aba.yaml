@@ -1,0 +1,5 @@
+# Receive / closed cable A-B-A candidate; frequencies do not authorize RF.
+schema_version: 1
+centers_hz: [2414000000, 2426000000]
+targets:
+  - {range_m: 20, amplitude: 0.5, phase_rad: 0}

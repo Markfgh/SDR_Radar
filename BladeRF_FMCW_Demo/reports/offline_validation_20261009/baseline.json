@@ -1,0 +1,23 @@
+{
+  "date_client": "2026-10-09",
+  "baseline_commit": "82fe36b7f13e709b54d474f233f0fe608f054ffc",
+  "initial_branch": "main",
+  "work_branch": "feature/prager-sww",
+  "initial_tracked_changes": [],
+  "initial_user_untracked_files_preserved": [
+    "ROADMAP_BLADE_RF_UWB_PRAGER.md",
+    "Ultrawideband_Synthesis_for_High-Range-Resolution_Software-Defined_Radar.pdf"
+  ],
+  "python": "3.11.9",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "legacy_baseline_tests": {"run": 11, "status": "PASS"},
+  "dll_path": "C:\\Program Files\\bladeRF\\x64\\bladeRF.dll",
+  "dll_version_read_without_device_open": "2.6.0 (2.6.0)",
+  "dll_version_observation": "During preparation, after offline implementation; no USB device opened",
+  "header_sha256": "483f163c43fc4bdc9f7dd985e7bb5448bc1c68a4aa463b4d552e7df408e6c3fa",
+  "hardware_probe": "NOT_EXECUTED",
+  "hardware_tx": "NEVER_ENABLED",
+  "hardware_gate": "BLOCKED",
+  "legacy_files_final_diff_against_baseline": "EMPTY"
+}
