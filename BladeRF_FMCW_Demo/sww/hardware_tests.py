@@ -59,7 +59,24 @@ def run_rx(config, path, blocks=100, metadata=False):
     radio = MetadataBladeRF()
     writer = None
     checks = []
+    pending = []
+    persisting = False
+    count = max(config.capture_samples, 32768) if metadata else config.capture_samples
+    if blocks * count * 4 > 256 * 1024**2:
+        raise ValueError("RX capture RAM budget exceeds 256 MiB")
     tracker = Continuity()
+
+    def persist():
+        # File/manifest writes during a 40 MS/s stream can themselves cause
+        # overruns. Stop RX, then preserve all buffers and their diagnostics.
+        nonlocal persisting
+        persisting = True
+        radio.stop_streaming()
+        for record, check in pending:
+            writer.append(record)
+            check["adc"] = adc(record.raw) if record.raw.size else None
+        write_json(Path(path) / "rx_checks.json", checks)
+
     try:
         info = radio.open_device()
         radio.force_tx_off()
@@ -69,24 +86,30 @@ def run_rx(config, path, blocks=100, metadata=False):
             int(config.bi_hz),
             info.rx_gain_range_db[0],
         )
+        if applied.actual_sample_rate_sps != config.fs_sps:
+            raise RuntimeError("Actual RX rate differs from requested rate")
+        if applied.actual_bandwidth_hz < config.bi_hz:
+            raise RuntimeError("Actual RX bandwidth below requested chirp bandwidth")
         env = {
             "device": asdict(info),
             "applied_rx": asdict(applied),
             "metadata": metadata,
             "tx_enabled": False,
+            "requested_block_samples": count,
         }
         if metadata:
             env["metadata_abi"] = radio.prepare_metadata()
-            radio.start_metadata_rx()
+        writer = CaptureWriter(Path(path) / "capture", config, "HARDWARE", env)
+        if metadata:
+            radio.start_metadata_rx(buffer_size=32768)
         else:
             radio.start_streaming(enable_tx=False)
-        writer = CaptureWriter(Path(path) / "capture", config, "HARDWARE", env)
         start = time.monotonic()
         for i in range(blocks):
             if time.monotonic() - start > 60:
                 raise TimeoutError("RX watchdog")
             if metadata:
-                record = radio.read_metadata(config.capture_samples, step=i)
+                record = radio.read_metadata(count, step=i)
             else:
                 raw = np.empty(2 * config.capture_samples, np.int16)
                 radio._check(
@@ -112,26 +135,27 @@ def run_rx(config, path, blocks=100, metadata=False):
                         "applied_rx": asdict(applied),
                     },
                 )
-            writer.append(record)
-            if record.raw.size == 0:
-                raise RuntimeError("Zero actual_count")
             check = tracker.observe(
                 record.timestamp,
                 record.actual_count,
-                config.capture_samples,
+                count,
                 record.status,
             )
-            check["adc"] = adc(record.raw)
             checks.append(check)
-            write_json(Path(path) / "rx_checks.json", checks)
+            pending.append((record, check))
             if (
                 record.status
-                or record.actual_count != config.capture_samples
+                or record.actual_count != count
                 or (metadata and not check["valid"])
+                or record.raw.size == 0
+                or np.any(np.abs(record.raw.astype(np.int32)) >= 2028)
+                or record.fc_hz != config.centers_hz[0]
             ):
                 raise RuntimeError(
-                    "RX metadata discontinuity; saved raw prefix and error"
+                    "RX discontinuity/count/status/clipping; saved raw prefix and error"
                 )
+        persist()
+        pending.clear()
         writer.finish()
         write_json(
             Path(path) / "gate_results.json",
@@ -162,6 +186,8 @@ def run_rx(config, path, blocks=100, metadata=False):
         }
     except BaseException as error:
         if writer:
+            if not persisting:
+                persist()
             writer.finish("FAULT", str(error))
         raise
     finally:

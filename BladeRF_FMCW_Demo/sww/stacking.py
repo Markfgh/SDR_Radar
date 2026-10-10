@@ -19,11 +19,18 @@ from .waveforms import chirp, fractional_delay, window
 
 
 def stack(
-    config, records, calibration="switched", apply_gls=True, motion_positions_m=None
+    config,
+    records,
+    calibration="switched",
+    apply_gls=True,
+    motion_positions_m=None,
+    measured_reference=None,
 ):
     config.validate()
-    if calibration not in ("switched", "summed", "none"):
+    if calibration not in ("switched", "summed", "none", "measured_summed"):
         raise ValueError("Unknown calibration mode")
+    if calibration == "measured_summed" and measured_reference is None:
+        raise ValueError("Measured reference I/Q and coefficients required")
     x = chirp(config)
     lfft = next_fast_len(config.capture_samples + x.size - 1)
     df = config.fs_sps / lfft
@@ -70,7 +77,13 @@ def stack(
             if rec.origin != "SIMULATED" and not rec.metadata.get(
                 "digital_epoch_known", False
             ):
-                raise ValueError("PHASE_UNVERIFIED: RX/TX digital epoch not qualified")
+                if not (
+                    calibration == "measured_summed"
+                    and rec.metadata.get("reference_relative_alignment")
+                ):
+                    raise ValueError(
+                        "PHASE_UNVERIFIED: RX/TX digital epoch not qualified"
+                    )
             if rec.metadata.get("clipped_components_before_quantization", 0) or np.any(
                 np.abs(rec.raw.astype(np.int32)) >= 2028
             ):
@@ -102,6 +115,37 @@ def stack(
             summed = coefficient
         local_z = dtft_uniform(observed, start, df, indices.size, config.fs_sps)
         valid = np.abs(local_x) > config.spectral_floor * np.max(np.abs(local_x))
+        if calibration == "measured_summed":
+            # Both arrays are MEASURED I/Q with the same reference-relative index.
+            # No synthetic echo or known target delay enters this calculation.
+            reference_iq, coefficient = measured_reference[step]
+            if len(reference_iq) != len(observed) or not np.isfinite(coefficient):
+                raise ValueError("Invalid measured reference")
+            ref_spectrum = dtft_uniform(
+                reference_iq, start, df, indices.size, config.fs_sps
+            )
+            valid &= np.abs(ref_spectrum) > config.spectral_floor * np.max(
+                np.abs(ref_spectrum)
+            )
+            transfer = np.zeros_like(local_x)
+            transfer[valid] = coefficient * ref_spectrum[valid] / local_x[valid]
+            valid &= (
+                np.abs(transfer)
+                >= max(float(np.max(np.abs(transfer))), 1e-30) / config.max_inverse_gain
+            )
+            local_z -= coefficient * ref_spectrum
+            local_z[valid] /= transfer[valid]
+            cal_metrics.append(
+                {
+                    "step": step,
+                    "method": "MEASURED_REFERENCE_RELATIVE",
+                    "reference_coefficient": [
+                        float(coefficient.real),
+                        float(coefficient.imag),
+                    ],
+                    "absolute_tx_rx_epoch_verified": False,
+                }
+            )
         for lower, upper in config.excluded_bands_hz:
             valid &= ~((rf[indices] >= lower) & (rf[indices] < upper))
         if calibration == "switched":

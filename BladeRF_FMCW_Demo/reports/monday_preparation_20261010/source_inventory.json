@@ -1,0 +1,524 @@
+{
+  "source_hash": "da24ecb9d701b859f5071cf961d50cf49a101dcba166266444c7210679860179",
+  "source_files": 54,
+  "python_files": 51,
+  "source_lines": 8217,
+  "origins_of_existing_captures": {
+    "SIMULATED": 101
+  },
+  "hardware_manifests": [],
+  "inventory": [
+    {
+      "file": "bladerf_interface.py",
+      "lines": 427,
+      "sha256": "28eb058a16b4d5b6473da7c21cbcbae95fa5e53fbdd60f6846abdd1b3dcac702",
+      "definitions": [
+        "BladeRFError",
+        "_Version",
+        "_DevInfo",
+        "_Range",
+        "DeviceInfo",
+        "RxConfiguration",
+        "RxBlock",
+        "TxConfiguration",
+        "sc16_q11_to_complex",
+        "complex_to_sc16_q11",
+        "BladeRFInterface"
+      ]
+    },
+    {
+      "file": "calibration.py",
+      "lines": 26,
+      "sha256": "cd84fe4291bcccb3f5d6c17c2ba28f87475cca601700d0447031a10248ef46da",
+      "definitions": [
+        "LeakageCalibration"
+      ]
+    },
+    {
+      "file": "fmcw.py",
+      "lines": 225,
+      "sha256": "52ca3f1099c6a0ed89babbeff2d1ec17a82970570b5e40a30a8d4d7f01edd2e5",
+      "definitions": [
+        "FmcwParameters",
+        "ProcessingResult",
+        "ChirpAlignment",
+        "RxAdcMetrics",
+        "rx_adc_metrics",
+        "generate_baseband_chirp",
+        "generated_rf_frequency_hz",
+        "estimate_chirp_alignment",
+        "rx_spectrogram",
+        "process_fmcw_block"
+      ]
+    },
+    {
+      "file": "fmcw_gui.py",
+      "lines": 405,
+      "sha256": "96f404aed03c9cc91fbf57391806f463c94cb63a1a2d9db7013799496eadbd34",
+      "definitions": [
+        "RxWorker",
+        "TxWorker",
+        "RadarWindow"
+      ]
+    },
+    {
+      "file": "gui.py",
+      "lines": 214,
+      "sha256": "2db7357b2266b9ae718177634302550cd527b4cd5902b0db56110c94ae601e91",
+      "definitions": [
+        "RxWorker",
+        "RadarWindow"
+      ]
+    },
+    {
+      "file": "main.py",
+      "lines": 33,
+      "sha256": "960ea21c1d13e8d583830e056b95f16b3adfc63af58612c601ad91dcd7eef75e",
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "file": "rx_smoke_test.py",
+      "lines": 33,
+      "sha256": "5116df8404ebb18c178adf1107be6973b3a8ff6cbd7bd3c756351ef3988bbc4e",
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "file": "scripts/metadata_abi.c",
+      "lines": 14,
+      "sha256": "d553326a208e47a633764164fed39241f9a72ece7774e45c3593005c935e6072",
+      "definitions": []
+    },
+    {
+      "file": "scripts/monday_preflight.ps1",
+      "lines": 15,
+      "sha256": "8347c31130c7ebfa135ab873b04a13c9abc32e53c6a8b74b62a114447e3d775b",
+      "definitions": []
+    },
+    {
+      "file": "scripts/monday_test.ps1",
+      "lines": 23,
+      "sha256": "61533b22ea8caae25fc1f7f3043c63519d3e1cad6074bd7dcbd198d9b6cd29b1",
+      "definitions": []
+    },
+    {
+      "file": "scripts/prepare_offline.py",
+      "lines": 105,
+      "sha256": "a171998c48b12fb9d39fd4ea0a970a9da22e7327e607b2413a6541c8b3c8b655",
+      "definitions": [
+        "main"
+      ]
+    },
+    {
+      "file": "scripts/validate_offline.py",
+      "lines": 89,
+      "sha256": "909996be67d40ff5527cb05d2892baf2c7cebdd8d37ec9b851a55917fd2b8b8a",
+      "definitions": [
+        "RecordedResult",
+        "main"
+      ]
+    },
+    {
+      "file": "simple_fmcw.py",
+      "lines": 192,
+      "sha256": "d8f889c96692e63b2a9452fbff7ef1dd150d89b98f9455b7ee3f7f6d6e3a6991",
+      "definitions": [
+        "SimpleFmcwWindow"
+      ]
+    },
+    {
+      "file": "sww/__init__.py",
+      "lines": 4,
+      "sha256": "59f76cea15f9fb23aec2adee5615896de8e26ab107352999a2357a9581681189",
+      "definitions": []
+    },
+    {
+      "file": "sww/acquisition.py",
+      "lines": 43,
+      "sha256": "4f561026fbc1aa64e48dd20b9522365c9f7ed95ab8604e0a05af7bdedbb36bdd",
+      "definitions": [
+        "RadioBackend",
+        "FakeRadioBackend"
+      ]
+    },
+    {
+      "file": "sww/bench.py",
+      "lines": 714,
+      "sha256": "d93d274be7daae2a7a1e3603fd684e233fab7c6e49cd07576355b5f5347bdd71",
+      "definitions": [
+        "fingerprint",
+        "load_session",
+        "qualification_inputs",
+        "visits",
+        "capture_pulses",
+        "references_for",
+        "save_reference_transfer",
+        "evaluate_stage",
+        "plot_phase",
+        "validate_all",
+        "plot_profiles",
+        "stacking_result",
+        "run_sequence",
+        "main"
+      ]
+    },
+    {
+      "file": "sww/bench_acquisition.py",
+      "lines": 351,
+      "sha256": "363fde4f3ca93eed281b7c10939486404490132b5348bec484259f5cdac6eae7",
+      "definitions": [
+        "BenchPermit",
+        "capture_stage",
+        "load_permit"
+      ]
+    },
+    {
+      "file": "sww/bench_analysis.py",
+      "lines": 292,
+      "sha256": "ece1ebd2e623c67a6d86a4e22e12d57a6ef8e29ea92de5bf299f107df6832123",
+      "definitions": [
+        "require",
+        "extract_pulses",
+        "align_reference",
+        "shifted",
+        "fit_independent_echo",
+        "validate_rows",
+        "measured_profiles",
+        "profile_metrics",
+        "raw_phase_stats"
+      ]
+    },
+    {
+      "file": "sww/calibration.py",
+      "lines": 86,
+      "sha256": "772460c12d936d61c3e0abc40dcb70330cdb73c9186f9bbfe7f49ac524acd517",
+      "definitions": [
+        "estimate_transfer",
+        "reference_projection",
+        "contamination"
+      ]
+    },
+    {
+      "file": "sww/cli.py",
+      "lines": 290,
+      "sha256": "77a537f02f9e146b3c9ca375a506aa929e3a8ecaf811300015db5c7e6ae742c8",
+      "definitions": [
+        "parser",
+        "main",
+        "simulated_repeats"
+      ]
+    },
+    {
+      "file": "sww/config.py",
+      "lines": 186,
+      "sha256": "ed9febbda07bc9dd85dc9463a1e0163deeaf3322226efd0b1b706fb2c16c454c",
+      "definitions": [
+        "Target",
+        "Config",
+        "from_dict",
+        "load_config"
+      ]
+    },
+    {
+      "file": "sww/diagnostics.py",
+      "lines": 37,
+      "sha256": "570ad5fcba5eddda24ed558c95e7c10be9ed83fa6558cb5de84c8c6dde7355d5",
+      "definitions": [
+        "adc",
+        "phase_statistics",
+        "reference_snr"
+      ]
+    },
+    {
+      "file": "sww/experiments.py",
+      "lines": 168,
+      "sha256": "43a30d6676f241ff83738541a6b5236932ee4fd07ef722178f315933d145d7d2",
+      "definitions": [
+        "compare",
+        "contamination_study",
+        "suppression_study"
+      ]
+    },
+    {
+      "file": "sww/gls.py",
+      "lines": 55,
+      "sha256": "2930bc03727813d78d96314d0e37b71f884ddc6756e92dfda963565296e4cb5d",
+      "definitions": [
+        "gls_filter"
+      ]
+    },
+    {
+      "file": "sww/gui.py",
+      "lines": 212,
+      "sha256": "0ae9b40900a2673e28961635779d2211e3e388ef1b447f5c477625cec5ecd89f",
+      "definitions": [
+        "SwwWindow",
+        "launch"
+      ]
+    },
+    {
+      "file": "sww/hardware.py",
+      "lines": 274,
+      "sha256": "8fc8a32be7cd761811bc88d34a3eb7acadeed3dc46a1470e435fb333030e9aa3",
+      "definitions": [
+        "verify_header",
+        "MetadataBladeRF",
+        "LoopbackPermit"
+      ]
+    },
+    {
+      "file": "sww/hardware_tests.py",
+      "lines": 412,
+      "sha256": "1354126f8087f0d30cd5462c4e9f9ce688688a3f26725837468fcc0efbfbbf8d",
+      "definitions": [
+        "run_probe",
+        "run_rx",
+        "run_loopback"
+      ]
+    },
+    {
+      "file": "sww/matched_filter.py",
+      "lines": 32,
+      "sha256": "1ad1b465338410caa39b0ea088c9f175b45120818e9a6c5087ae2ba1dac92bf4",
+      "definitions": [
+        "matched_filter",
+        "dtft_uniform"
+      ]
+    },
+    {
+      "file": "sww/metrics.py",
+      "lines": 120,
+      "sha256": "9f067dee219b45eb26bef87bc71b87e844e4f0496428a0b677818d6b6185ec4a",
+      "definitions": [
+        "db",
+        "peak_metrics",
+        "two_target_metrics",
+        "phase_residual"
+      ]
+    },
+    {
+      "file": "sww/motion.py",
+      "lines": 39,
+      "sha256": "1bed938c1972b05cd96d45d0655a5b42f6ab9f998a648c9a6c6cf9947290ad18",
+      "definitions": [
+        "path_errors",
+        "compensate",
+        "scene_approximation_error"
+      ]
+    },
+    {
+      "file": "sww/offline_demos.py",
+      "lines": 126,
+      "sha256": "1f364bc1780e5534bc51dedb30a5038f8c1b107cdb1a8c1f713100aa5e14eebc",
+      "definitions": [
+        "motion_dataset",
+        "sar_demo"
+      ]
+    },
+    {
+      "file": "sww/reporting.py",
+      "lines": 208,
+      "sha256": "f32bb72354477783d1e9e55166987bb780e505fb9ba8056720f7e30ddf60f967",
+      "definitions": [
+        "new_report",
+        "save_results",
+        "plot_results"
+      ]
+    },
+    {
+      "file": "sww/rf_switch.py",
+      "lines": 45,
+      "sha256": "02a61c04bf1cda82a2f727462649476902d98e37fd3c768222844b0d8b698bda",
+      "definitions": [
+        "MockSwitchController",
+        "ManualSwitchController"
+      ]
+    },
+    {
+      "file": "sww/sar.py",
+      "lines": 50,
+      "sha256": "5a5ba6c40a41e92674525155a24ab5b5d2559fc36455020658ec3f18e444bacf",
+      "definitions": [
+        "backproject"
+      ]
+    },
+    {
+      "file": "sww/sar_replay.py",
+      "lines": 81,
+      "sha256": "5def94478421ec5019cbea289f3a938861a08b34e4ee12df84496bcae81808d3",
+      "definitions": [
+        "process"
+      ]
+    },
+    {
+      "file": "sww/scheduler.py",
+      "lines": 114,
+      "sha256": "6c703a4a2de3ff701c874bf1fefdcc2bb4a81cf9adbba6771226b88f674c7490",
+      "definitions": [
+        "Sequencer"
+      ]
+    },
+    {
+      "file": "sww/simulation.py",
+      "lines": 110,
+      "sha256": "9dcfb31d5e7c22097ad7d3209f16093e141da1fd39d8d92e43c691ee29bf02a2",
+      "definitions": [
+        "simulate"
+      ]
+    },
+    {
+      "file": "sww/stacking.py",
+      "lines": 268,
+      "sha256": "23b9ff8dc6d23ba704f62e6bc2b07cb2b10a4b2be3b62b985443b46c0c56bab7",
+      "definitions": [
+        "stack"
+      ]
+    },
+    {
+      "file": "sww/storage.py",
+      "lines": 140,
+      "sha256": "a3f6a3b1a2fcf0b3d8ec53899359478864f68c0693da0d4a3267bf353d297d2f",
+      "definitions": [
+        "clean",
+        "write_json",
+        "sha",
+        "source_hash",
+        "CaptureWriter",
+        "replay"
+      ]
+    },
+    {
+      "file": "sww/timing.py",
+      "lines": 73,
+      "sha256": "4d83506119b426eada8accc532ed8876fba345352c38bc0876be3948c018f55c",
+      "definitions": [
+        "Metadata",
+        "check_abi",
+        "Continuity"
+      ]
+    },
+    {
+      "file": "sww/types.py",
+      "lines": 49,
+      "sha256": "d9cf7c1db8b647a2d2f5468163919ba2b6e6b76a31c10e156d28280e142fffa8",
+      "definitions": [
+        "AcquisitionRecord",
+        "CalibrationResult",
+        "SwwResult"
+      ]
+    },
+    {
+      "file": "sww/waveforms.py",
+      "lines": 56,
+      "sha256": "f5ae7e62e8e37a1d0a9f402bf477ce709b3df9cf708b4345e9957ef405c16597",
+      "definitions": [
+        "window",
+        "chirp",
+        "fractional_delay",
+        "encode_sc16"
+      ]
+    },
+    {
+      "file": "tests/test_adc_monitor.py",
+      "lines": 44,
+      "sha256": "f661238c0d087d222b09787c480e5e8492e5385795cc5467d90bd4d64cd6bc6f",
+      "definitions": [
+        "RxAdcMetricsTests"
+      ]
+    },
+    {
+      "file": "tests/test_fmcw.py",
+      "lines": 81,
+      "sha256": "29c2c206a011ef33811e475bfd7ea154cc94afad9b8758e23d3163241da91139",
+      "definitions": [
+        "FmcwTests"
+      ]
+    },
+    {
+      "file": "tests/test_sc16_conversion.py",
+      "lines": 20,
+      "sha256": "5cfcf8d73e3338f6cecfc684d8915f932218fb3b88dc022f0858446de3aeac89",
+      "definitions": [
+        "Sc16ConversionTests"
+      ]
+    },
+    {
+      "file": "tests_sww/__init__.py",
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "definitions": []
+    },
+    {
+      "file": "tests_sww/test_bench.py",
+      "lines": 767,
+      "sha256": "510f8e92c6c70e2b7b814b528b4c6421c303f7ee9499941d6a4649fee1ae9fb7",
+      "definitions": [
+        "fixture_session",
+        "permit_data",
+        "write_fixture",
+        "BenchTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_calibration_gls.py",
+      "lines": 86,
+      "sha256": "82e374c0e45952c154bee6641ff0aafdb66443ff08334e059d98ff1c86c1e1da",
+      "definitions": [
+        "CalibrationGlsTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_hardware_mock_cli.py",
+      "lines": 135,
+      "sha256": "bfb5694bc106be6c669c87d75ebb252cef25f476ec08a09aad7363e7409e9f1a",
+      "definitions": [
+        "HardwareMockTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_math.py",
+      "lines": 75,
+      "sha256": "b2b90144a1b34b1709980187c291106d4a9ff2859356c120476c6ae4222ddab2",
+      "definitions": [
+        "MathematicalTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_stacking.py",
+      "lines": 158,
+      "sha256": "f103c5af2a50cf55aeab9c78fc6b04b1505738e0e28d71d3c90c29475f98a1e8",
+      "definitions": [
+        "StackingTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_storage_safety.py",
+      "lines": 205,
+      "sha256": "f543d096a0faf57c73ce08f7f08ef783c58d380b53d3f74c2f3fda7d3661f2ce",
+      "definitions": [
+        "StorageSafetyTests"
+      ]
+    },
+    {
+      "file": "tests_sww/test_timing_sar_gui.py",
+      "lines": 134,
+      "sha256": "3204185ee23a2226ee0576345a9e7bbc683575f58ef22d0330bd7647ea776fd5",
+      "definitions": [
+        "TimingTests",
+        "MotionSarTests",
+        "GuiTests"
+      ]
+    },
+    {
+      "file": "txrx_smoke_test.py",
+      "lines": 76,
+      "sha256": "b6ce759d15ad7dc99f42e994fd5d5d61588250967ab67e0c6fccbe06fc7cb6d9",
+      "definitions": [
+        "main"
+      ]
+    }
+  ]
+}

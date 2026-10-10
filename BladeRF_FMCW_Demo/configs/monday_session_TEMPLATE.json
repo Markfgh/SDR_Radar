@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session_id": "2026-10-12-bench-01",
+  "config": {
+    "schema_version": 1,
+    "centers_hz": [2414000000, 2426000000, 2438000000, 2450000000],
+    "fs_sps": 40000000,
+    "bi_hz": 12000000,
+    "bs_hz": 12000000,
+    "tp_s": 0.0000256,
+    "capture_samples": 2048,
+    "amplitude": 0.05,
+    "topology": "summed",
+    "targets": [],
+    "max_range_m": 80,
+    "gls_mode": "stable",
+    "range_window": "rect"
+  },
+  "rx_blocks": 100,
+  "fixed_repeats": 20,
+  "aba_cycles": 10,
+  "sweep_repeats": 10,
+  "reference_repeats": 3,
+  "criteria_approved_by": "",
+  "criteria_evidence": "",
+  "criteria": {
+    "detection_peak_fraction": null,
+    "min_detection_confidence": null,
+    "max_reference_shape_error": null,
+    "max_gram_condition": null,
+    "min_reference_fit_snr_db": null,
+    "min_echo_fit_snr_db": null,
+    "max_model_residual_fraction": null,
+    "max_phase_rms_rad": null,
+    "max_phase_p95_rad": null,
+    "max_delay_error_s": null,
+    "max_projection_phase_bound_rad": null,
+    "min_coverage_fraction": null,
+    "max_range_error_m": null,
+    "max_width_ratio": null,
+    "min_repeats": null
+  },
+  "independent_path": {
+    "independently_measured": false,
+    "stationary_single_path": false,
+    "relative_delay_s": null,
+    "delay_uncertainty_s": null,
+    "evidence": ""
+  }
+}

@@ -1,9 +1,35 @@
-# Stato implementazione - 9 ottobre 2026
+# Stato implementazione - 10 ottobre 2026
 
 Il software offline SWW e implementato in `BladeRF_FMCW_Demo/sww/`, sul branch
 `feature/prager-sww`, dalla baseline `82fe36b7f13e709b54d474f233f0fe608f054ffc`.
 La demo esistente, i suoi entrypoint e le protezioni TX non sono stati modificati.
 **Nessuna TX reale, nessun push, nessun gate hardware approvato.**
+
+## Preparazione collaudo del 12 ottobre
+
+Il runner `python -m sww.bench` e il wrapper `scripts/monday_test.ps1` eseguono
+in ordine le sole prove autorizzate, con arresto al primo FAIL/BLOCKED, permessi
+per fase con scadenza/hash, conferma fisica e gestione sicura dei buffer RX.
+Il [piano definitivo](MONDAY_TEST_PLAN.md) privilegia il banco splitter/30 dB/
+combiner con antenne, con CAL isolate temporaneamente terminando il ramo eco RX.
+
+Il percorso di collaudo usa riferimenti e residui I/Q misurati per la calibrazione
+complessa e riusa Algorithm 1; non chiama il simulatore e rifiuta acquisizioni
+SIMULATED, incomplete o corrotte. Qualifica separabilita, fase e ritardo su un
+singolo percorso noto indipendente, poi confronta la larghezza misurata singolo/SWW.
+Il PASS e limitato alla scena stazionaria e alla distanza relativa al riferimento:
+epoch/range assoluti, scene multipath e risoluzione di due bersagli non sono
+certificati da questa procedura. La FSM hardware commutata rimane bloccata.
+
+Le soglie hardware e il percorso indipendente sono campi obbligatori ancora da
+compilare al banco. La banda e selezionabile fra quelle disponibili sulla scheda,
+come autorizzato dall'utente; il piano iniziale occupa 2408-2456 MHz.
+Nessun nuovo sviluppo SAR o modifica GUI. L'audit e le verifiche offline sono in
+`BladeRF_FMCW_Demo/reports/monday_preparation_20261010/`.
+
+Verifica del 10 ottobre: **83 test PASS** (11 legacy, 55 SWW precedenti, 17 bench),
+Ruff check/format PASS su 41 file e wrapper PowerShell verificato in dry-run.
+L'inventario comprende 54 file sorgente; nessuna cattura HARDWARE presente.
 
 ## Funzioni ed evidenze
 
@@ -19,12 +45,12 @@ La demo esistente, i suoi entrypoint e le protezioni TX non sono stati modificat
 | Controller mock/manuale e FSM CAL_PRE/RADAR/CAL_POST | TESTATO_OFFLINE PASS | No retune interno, readback obbligatorio, fault/abort |
 | Probe e RX legacy/metadata | IMPLEMENTATO, TESTATO_MOCK | Hardware da collaudare H0-H2 |
 | TX metadata/burst, loopback, fase, A-B-A | IMPLEMENTATO, TESTATO_MOCK | Solo con permesso esplicito cablato; nessuna TX eseguita |
-| Acquisizione SWW coerente hardware | BLOCKED | Epoch, G1, trasferimenti e switch fisici non qualificati |
+| Acquisizione SWW hardware | PREPARATA / NON QUALIFICATA | Runner banco sommato con prova indipendente; reale non eseguito. FSM commutata ancora BLOCKED |
 | CLI e GUI diagnostica separata | TESTATO_OFFLINE PASS | Sei tab, Qt offscreen e CLI end-to-end; hardware mostra raw/PHASE_UNVERIFIED |
 | Motion compensation e SAR | SIMULATO / TESTATO_OFFLINE PASS | Geometria nota, 31 pose raw e replay; reale BLOCKED |
 | Demo legacy | TESTATO_OFFLINE PASS | 11 test baseline e finali; funzionamento RF riferito dall'utente, non UWB validato |
 
-La verifica finale ha superato **66 test (11 legacy + 55 SWW)** e nove confronti
+La verifica del 9 ottobre ha superato **66 test (11 legacy + 55 SWW)** e nove confronti
 di replay identici su tutti i campi NPZ, inclusa l'apertura SAR. Ruff check e
 format --check passano sui nuovi moduli. La suite e i risultati effettivi sono in
 `BladeRF_FMCW_Demo/reports/offline_validation_20261009/test_results.json`.

@@ -1,0 +1,20 @@
+{
+  "session_sha256": "364f3872897b9501acedf3fbd80f95c872cd0ce374d6562f7f10cfe33b7cb70a",
+  "source_hash": "da24ecb9d701b859f5071cf961d50cf49a101dcba166266444c7210679860179",
+  "selected_stages": [
+    "offline",
+    "probe",
+    "rx",
+    "reference_pre",
+    "fixed",
+    "aba",
+    "sweep",
+    "reference_post",
+    "validate",
+    "stack"
+  ],
+  "tx_enabled": false,
+  "radio_opened": false,
+  "tx_authorization_is_separate": true,
+  "qualification_inputs": "BLOCKED: approved numeric criterion missing/invalid: detection_peak_fraction"
+}

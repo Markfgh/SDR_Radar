@@ -35,7 +35,7 @@ def peak_metrics(
 
     width = (
         crossing(right - 1, right) - crossing(left, left + 1)
-        if left < i < right
+        if left < i < right and a[left] <= level and a[right] <= level
         else None
     )
     if mainlobe_half_width_m is None:
